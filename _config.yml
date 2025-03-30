@@ -1,0 +1,19 @@
+# Einstellungen für GitHub Pages mit Jekyll
+title: CyberScouts
+description: Von Konsumenten zu Anwendern
+baseurl: ""
+url: "https://DEIN_USERNAME.github.io/cyberscouts-website"
+
+# Sammlungen definieren
+collections:
+  kurse:
+    output: true
+  events:
+    output: true
+  team:
+    output: true
+  faq:
+    output: true
+
+# Build-Einstellungen
+markdown: kramdown
