@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: DEIN_USERNAME/cyberscouts-website
+  repo: 3Blin/CyberScouts-Website
   branch: main
 
 media_folder: "images/uploads"
