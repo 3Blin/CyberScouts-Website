@@ -1,11 +1,59 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>CyberScouts CMS</title>
-    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-  </head>
-  <body>
-    <div id="nc-root"></div>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberScouts CMS</title>
+  
+  <!-- Netlify Identity Widget -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+  
+  <!-- Logo und Custom Styles -->
+  <style>
+    .login-logo {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 150px;
+    }
+    .cms-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: sans-serif;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Nachricht während das CMS lädt -->
+  <div class="cms-loading">
+    <div>
+      <img src="/assets/logo.png" alt="CyberScouts Logo" class="login-logo">
+      <h2>CyberScouts CMS lädt...</h2>
+    </div>
+  </div>
+  
+  <!-- Wichtig: Dieses Element wird vom CMS benötigt -->
+  <div id="nc-root"></div>
+  
+  <!-- Netlify CMS Script -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js" defer></script>
+  
+  <script>
+    // Warten bis DOM geladen ist
+    document.addEventListener('DOMContentLoaded', function() {
+      // Netlify Identity Redirect
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    });
+  </script>
+</body>
 </html>
