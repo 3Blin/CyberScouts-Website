@@ -1,8 +1,6 @@
 [build]
 publish = "."  # Root-Verzeichnis
 
-# Wichtig: KEIN "command"-Eintrag hier!
-
 [[redirects]]
   from = "/admin"
   to = "/admin/index.html"
