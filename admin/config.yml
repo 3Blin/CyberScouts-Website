@@ -6,12 +6,11 @@ media_folder: "static/uploads"
 public_folder: "/uploads"
 
 collections:
-  - name: "seiteninhalte"
-    label: "Seiteninhalte"
-    files:
-      - file: "index.html"
-        label: "Landing Page"
-        name: "landing"
-        fields:
-          - { label: "Titel", name: "title", widget: "string" }
-          - { label: "Inhalt", name: "body", widget: "markdown" }
+  - name: "landing"
+    label: "Landing Page"
+    folder: "content/landing"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Inhalt", name: "body", widget: "markdown" }
