@@ -1,0 +1,8 @@
+[build]
+  publish = "public" # oder dein tatsächliches Verzeichnis (z. B. "dist", "site")
+  command = "npm run build" # oder "hugo", "gatsby build", etc. je nach Framework
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 200
