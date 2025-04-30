@@ -1,42 +1,25 @@
 backend:
   name: git-gateway
-  branch: main # Branch to update
+  branch: main
 
-# Aktiviere Editorial Workflow für Preview von Änderungen
-publish_mode: editorial_workflow
+# Einfaches Setup ohne Editorial Workflow um Probleme zu vermeiden
+# publish_mode: editorial_workflow
 
 # Pfade für Medien-Uploads
-media_folder: "assets/uploads" # Wo Dateien gespeichert werden
-public_folder: "/assets/uploads" # Wie sie im frontend referenziert werden
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
 
-# Logo-URL für das Admin-Panel anpassen
-logo_url: /assets/logo.png
-
-# Collections definieren die Struktur des Inhalts
+# Vereinfachte Collections für den Start
 collections:
-  - name: "pages" # Used in routes, e.g., /admin/collections/pages
-    label: "Seiten" # Used in the UI
-    folder: "content/pages" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template, e.g., about.md
-    fields: # The fields for each document
+  - name: "pages"
+    label: "Seiten"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
       - {label: "Titel", name: "title", widget: "string"}
-      - {label: "Beschreibung", name: "description", widget: "text", required: false}
       - {label: "Inhalt", name: "body", widget: "markdown"}
       
-  - name: "landing"
-    label: "Startseite"
-    files:
-      - name: "home"
-        label: "Startseite"
-        file: "content/landing/home.md"
-        fields:
-          - {label: "Titel", name: "title", widget: "string"}
-          - {label: "Untertitel", name: "subtitle", widget: "string"}
-          - {label: "CTA Button Text", name: "cta", widget: "string"}
-          - {label: "CTA Link", name: "cta_link", widget: "string", default: "#kontakt"}
-          - {label: "Einführungstext", name: "intro", widget: "text"}
-          
   - name: "modules"
     label: "Module"
     folder: "content/modules"
@@ -44,22 +27,5 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Titel", name: "title", widget: "string"}
-      - {label: "Icon", name: "icon", widget: "string", hint: "Emoji oder Icon-Klasse"}
-      - {label: "Kurzbeschreibung", name: "description", widget: "string"}
-      - {label: "Reihenfolge", name: "order", widget: "number", default: 1}
-      - {label: "Detailinhalt", name: "body", widget: "markdown", required: false}
-
-  - name: "config"
-    label: "Konfiguration"
-    files:
-      - name: "info"
-        label: "Kontaktinformationen"
-        file: "content/config/info.json"
-        fields:
-          - {label: "Email", name: "email", widget: "string", default: "kontakt@cyberscouts.it"}
-          - {label: "Telefon", name: "phone", widget: "string", required: false}
-          - {label: "Adresse", name: "address", widget: "text", required: false}
-          - {label: "Social Media", name: "social", widget: "list", required: false, fields: [
-              {label: "Plattform", name: "platform", widget: "select", options: ["github", "instagram", "facebook", "twitter", "youtube"]},
-              {label: "URL", name: "url", widget: "string"}
-            ]}
+      - {label: "Icon", name: "icon", widget: "string"}
+      - {label: "Beschreibung", name: "description", widget: "string"}
