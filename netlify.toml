@@ -1,7 +1,21 @@
 [build]
-publish = "."  # Root-Verzeichnis
+  publish = "."  # Das Root-Verzeichnis als Publish-Verzeichnis beibehalten
 
+# Redirects für den Admin-Bereich
 [[redirects]]
-  from = "/admin"
+  from = "/admin/*"
   to = "/admin/index.html"
   status = 200
+
+# Identity Settings
+[template.environment]
+  NETLIFY_IDENTITY_ENABLED = "true"
+
+# Headers für bessere Sicherheit
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "same-origin"
+    Content-Security-Policy = "default-src 'self' https://unpkg.com https://identity.netlify.com; script-src 'self' 'unsafe-inline' https://unpkg.com https://identity.netlify.com; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https://unpkg.com"
