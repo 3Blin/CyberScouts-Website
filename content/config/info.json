@@ -1,0 +1,14 @@
+### content/config/info.json
+```json
+{
+  "email": "kontakt@cyberscouts.it",
+  "phone": "",
+  "address": "",
+  "social": [
+    {
+      "platform": "github",
+      "url": "https://github.com/3Blin/CyberScouts-Website"
+    }
+  ]
+}
+```
