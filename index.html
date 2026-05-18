@@ -4,94 +4,208 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CyberScouts – be prepared</title>
-  <link rel="stylesheet" href="assets/styles.css">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, sans-serif; line-height: 1.6; background: #f5f5f5; }
-    header.hero {
-      background: url('assets/hero-image.jpg') center/cover no-repeat;
-      color: white;
-      padding: 100px 20px;
-      text-align: center;
-    }
-    .hero h1 { font-size: 3em; margin-bottom: 0.5em; }
-    .hero p { font-size: 1.2em; margin-bottom: 1em; }
-    .cta-button {
-      background: #ff6600;
-      color: white;
-      padding: 15px 30px;
-      font-size: 1em;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    section.content { padding: 40px 20px; max-width: 900px; margin: auto; }
-    section.content h2 { margin-bottom: 20px; color: #333; }
-    .footer {
-      background: #222; color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    .modules { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
-    .module {
-      flex: 1 1 250px;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .image-gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 40px;
-    }
-    .image-gallery img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      width: 280px;
-    }
-  </style>
+
+  <!-- CSP Meta-Tag (temporarily removed for testing - RE-ENABLE LATER with correct font-src) -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; font-src 'self' https://cdnjs.cloudflare.com; frame-src *; style-src * 'unsafe-inline';"> -->
+
+  <!-- Netlify Identity Widget -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+
+  <!-- Font Awesome für Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Haupt-Stylesheet -->
+  <link href="styles.css" rel="stylesheet">
+  <!-- Link zur benutzerdefinierten Schriftart -->
+  <link href="assets/fonts/fonts.css" rel="stylesheet">
 </head>
 <body>
-  <header class="hero">
-    <h1>CyberScouts</h1>
-    <p>be prepared</p>
-    <a href="#kontakt" class="cta-button">Jetzt mitmachen</a>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#hero" class="logo">
+        <img src="assets/logo.png" alt="CyberScouts Logo">
+      </a>
+      <!-- Desktop Nav Links (Hidden on mobile) -->
+      <div class="nav-links desktop-nav">
+        <a href="#about">Über uns</a>
+        <a href="#modules">Module</a>
+        <a href="#events">Events</a>
+        <a href="#contact">Kontakt</a>
+      </div>
+      <!-- Hamburger Menu Toggle -->
+      <div class="menu-toggle" id="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sidebar Menu (Hidden by default) -->
+  <div class="sidebar" id="sidebar">
+    <button class="close-btn" id="close-btn">&times;</button>
+    <a href="#hero" class="sidebar-link">Home</a>
+    <a href="#about" class="sidebar-link">Über uns</a>
+    <a href="#modules" class="sidebar-link">Module</a>
+    <a href="#events" class="sidebar-link">Events</a>
+    <a href="#contact" class="sidebar-link">Kontakt</a>
+    <hr class="sidebar-divider">
+    <a class='sidebar-link' href='/impressum'>Impressum</a>
+    <a class='sidebar-link' href='/datenschutz'>Datenschutz</a>
+    <a class='sidebar-link' href='/cookies'>Cookie-Richtlinie</a>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Hero Section -->
+  <header id="hero" class="hero section">
+    <div class="container">
+      <h1>CyberScouts</h1>
+      <p class="subtitle">be prepared</p>
+      <a href="#modules" class="btn btn-secondary">Entdecke unsere Module</a> <!-- Changed to secondary style -->
+    </div>
   </header>
 
-  <section class="content">
-    <h2>Was sind die CyberScouts?</h2>
-    <p>Wir sind ein offener Maker Space für Kinder und Jugendliche zwischen 10 und 16 Jahren. Bei uns geht es um Technik, Kreativität und echtes Machen – von Elektronik über Programmieren bis hin zu Robotik und KI.</p>
-
-    <div class="modules">
-      <div class="module"><strong>🔧 Hardware & Repair</strong><br>Reparieren, Tüfteln, Aufrüsten</div>
-      <div class="module"><strong>💾 Betriebssysteme & Netzwerke</strong><br>Windows, Linux & Co.</div>
-      <div class="module"><strong>🔐 IT-Sicherheit</strong><br>Hacken, schützen, verstehen</div>
-      <div class="module"><strong>💻 Programmieren</strong><br>Von Scratch bis Python</div>
-      <div class="module"><strong>⚙️ Elektronik & Microcontroller</strong><br>Löten & Steuern mit Arduino & Co.</div>
-      <div class="module"><strong>🤖 Robotik & KI</strong><br>Maschinen bauen und denken lassen</div>
-    </div>
-
-    <div class="image-gallery">
-      <img src="assets/gallery01.jpg" alt="Workshop Impression 1">
-      <img src="assets/gallery02.jpg" alt="Workshop Impression 2">
-      <img src="assets/gallery03.jpg" alt="Workshop Impression 3">
+  <!-- About Section -->
+  <section id="about" class="about section">
+    <div class="container">
+      <h2>Was sind die CyberScouts?</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Wir sind ein offener Maker Space für Kinder und Jugendliche (ca. 10-15 Jahre). Bei uns geht es um Technik, Kreativität und echtes Machen – von Elektronik über Programmieren bis hin zu Robotik und 3D-Druck.</p>
+          <p>In gemütlicher Atmosphäre lernst du die Technologien der Zukunft kennen, experimentierst mit Hardware und Software und entwickelst eigene Projekte. Fehler sind erlaubt und wichtig!</p>
+          <h4>Unsere Werte:</h4>
+          <ul>
+            <li><i class="fas fa-check"></i> Neugier & Experimentierfreude</li>
+            <li><i class="fas fa-check"></i> Teamgeist & Wissen teilen</li>
+            <li><i class="fas fa-check"></i> Verantwortung & Respekt</li>
+            <li><i class="fas fa-check"></i> Machen statt nur konsumieren</li>
+          </ul>
+           <a href="#contact" class="btn btn-secondary" style="margin-top: 20px;">Jetzt Kontakt aufnehmen</a>
+        </div>
+        <div class="about-image">
+          <img src="assets/Team.jpg" alt="CyberScouts Team Platzhalter" class="placeholder-image">
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="content" id="kontakt">
-    <h2>Du willst mitmachen?</h2>
-    <p>Dann schreib uns eine E-Mail an <a href="mailto:mail@cyberscouts.it">mail@cyberscouts.it</a> oder besuch uns in unserem MakerSpace.</p>
+  <!-- Module Section -->
+  <section id="modules" class="modules section section-bg-light">
+    <div class="container">
+      <h2>Unsere Module</h2>
+      <p class="section-intro">Entdecke die spannende Welt der Technologie in unseren verschiedenen Bereichen:</p>
+      <div class="modules-grid">
+        <!-- Module Cards... -->
+        <div class="module-card">
+          <img src="assets/Hardware.jpeg" alt="Hardware Modul Platzhalter" class="placeholder-image-small">
+          <h3>Hardware</h3>
+          <p>Computer bauen, aufrüsten und verstehen.</p>
+        </div>
+        <div class="module-card">
+          <img src="assets/Betriebssysteme_2.jpg" alt="Betriebssysteme Modul Platzhalter" class="placeholder-image-small">
+          <h3>Betriebssysteme & Netzwerke</h3>
+          <p>Windows, Linux, Server und wie alles zusammenhängt.</p>
+        </div>
+        <div class="module-card">
+          <img src="assets/Hacker.jpg" alt="Security Modul Platzhalter" class="placeholder-image-small">
+          <h3>IT-Sicherheit</h3>
+          <p>Hacken (ethisch!), schützen und sicher im Netz unterwegs sein.</p>
+        </div>
+        <div class="module-card">
+          <img src="assets/Programmieren.jpg" alt="Programmierung Modul Platzhalter" class="placeholder-image-small">
+          <h3>Programmierung</h3>
+          <p>Von Python bis C# – lerne Code zu schreiben.</p>
+        </div>
+        <div class="module-card">
+          <img src="assets/Elektronik.jpg" alt="Elektronik Modul Platzhalter" class="placeholder-image-small">
+          <h3>Elektronik</h3>
+          <p>Löten, Schaltungen bauen und Mikrocontroller verstehen.</p>
+        </div>
+        <div class="module-card">
+          <img src="assets/Robotik.jpg" alt="Robotik Modul Platzhalter" class="placeholder-image-small">
+          <h3>Robotik & 3D-Druck</h3>
+          <p>Baue Roboter und drucke deine eigenen Kreationen.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
+  <!-- Events Section -->
+  <section id="events" class="section">
+    <div class="container">
+      <h2>Kommende Events</h2>
+      <p class="section-intro">Hier findest du unsere nächsten Workshops, Treffen und besonderen Aktionen.</p>
+      <div class="calendar-placeholder">
+        <p><!-- Elfsight Event Calendar | Untitled Event Calendar -->
+<script src="https://static.elfsight.com/platform/platform.js" async></script>
+<div class="elfsight-app-3a7ebdb6-6eaf-4297-a240-bbd97b44318f" data-elfsight-app-lazy></div></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt Section -->
+  <section id="contact" class="contact section section-bg-light">
+    <div class="container">
+      <h2>Mach mit!</h2>
+      <p class="section-intro">Interesse geweckt? Melde dich oder komm einfach vorbei!</p>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <!-- Info Items... -->
+           <div class="info-item">
+            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="info-text">
+              <h3>Standort</h3>
+              <p>CyberScouts<br>Hetzelstraße 19<br>67433 Neustadt</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-clock"></i></div>
+            <div class="info-text">
+              <h3>Treffen</h3>
+              <p>Jeden Mittwoch<br>18:00 - 20:00 Uhr</p>
+              <p>(Details im Kalender)</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div class="info-text">
+              <h3>Kontakt</h3>
+              <p>Email: <a href="mailto:mail@cyberscouts.it">mail@cyberscouts.it</a></p>
+            </div>
+          </div>
+        </div>
+         <!--  <div class="contact-image">
+           <img src="https://via.placeholder.com/450x300.png/eeeeee/aaaaaa?text=Kontakt+Bild" alt="Kontakt Platzhalter" class="placeholder-image">
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="footer">
-    <p>&copy; CyberScouts.it – Technik erleben. Zukunft gestalten.</p>
-    <p><a href="./impressum.html">Impressum</a> · <a href="./datenschutz.html">Datenschutz</a> · <a href="./cookies.html">Cookies</a></p>
+    <div class="container">
+      <div class="footer-content">
+          <p>CyberScouts – Technik erleben. Zukunft gestalten.</p>
+          <div class="copyright">
+            &copy; 2025 CyberScouts | <a href='/impressum'>Impressum</a> | <a href='/datenschutz'>Datenschutz</a> | <a href='/cookies'>Cookie-Richtlinie</a> | <a href="/admin/">Admin</a>
+          </div>
+      </div>
+    </div>
   </footer>
+
+  <!-- JavaScript für Mobile Menu -->
+  <script src="main.js" defer></script>
+
+  <!-- Netlify Identity Redirect Script (Keep as is) -->
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>

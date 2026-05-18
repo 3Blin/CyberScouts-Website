@@ -1,0 +1,31 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Einfaches Setup ohne Editorial Workflow um Probleme zu vermeiden
+# publish_mode: editorial_workflow
+
+# Pfade für Medien-Uploads
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+# Vereinfachte Collections für den Start
+collections:
+  - name: "pages"
+    label: "Seiten"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Inhalt", name: "body", widget: "markdown"}
+      
+  - name: "modules"
+    label: "Module"
+    folder: "content/modules"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Icon", name: "icon", widget: "string"}
+      - {label: "Beschreibung", name: "description", widget: "string"}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberScouts CMS</title>
+  
+  <!-- CSP Meta-Tag, um Einschränkungen zu lockern -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://unpkg.com https://identity.netlify.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://identity.netlify.com; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https://unpkg.com; font-src 'self' data: https://unpkg.com; connect-src 'self' https://api.netlify.com https://identity.netlify.com;">
+  
+  <!-- Netlify Identity Widget -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  
+  <!-- Logo und Custom Styles -->
+  <style>
+    .login-logo {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 150px;
+    }
+    .cms-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: sans-serif;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Nachricht während das CMS lädt -->
+  <div class="cms-loading">
+    <div>
+      <img src="/assets/logo.png" alt="CyberScouts Logo" class="login-logo" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><rect width=%22100%22 height=%22100%22 fill=%22%23333%22/><text x=%2250%%22 y=%2250%%22 font-size=%2220%22 text-anchor=%22middle%22 fill=%22white%22 dominant-baseline=%22middle%22>Logo</text></svg>';">
+      <h2>CyberScouts CMS lädt...</h2>
+    </div>
+  </div>
+  
+  <!-- Wichtig: Dieses Element wird vom CMS benötigt -->
+  <div id="nc-root"></div>
+  
+  <!-- Netlify CMS Script - ohne defer für korrekte Ladereihenfolge -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  
+  <script>
+    // CMS Konfiguration über JavaScript anstatt config.yml laden (zur Fehlerbehebung)
+    if (window.CMS) {
+      try {
+        // Überprüfen, ob die Config bereits geladen wurde
+        if (!window.CMS.getConfig()) {
+          // Fallback-Konfiguration, falls config.yml Probleme hat
+          window.CMS.init({
+            config: {
+              backend: {
+                name: 'git-gateway',
+                branch: 'main'
+              },
+              media_folder: 'assets/uploads',
+              public_folder: '/assets/uploads',
+              collections: [
+                {
+                  name: 'pages',
+                  label: 'Seiten',
+                  folder: 'content/pages',
+                  create: true,
+                  slug: '{{slug}}',
+                  fields: [
+                    { label: 'Titel', name: 'title', widget: 'string' },
+                    { label: 'Beschreibung', name: 'description', widget: 'text', required: false },
+                    { label: 'Inhalt', name: 'body', widget: 'markdown' }
+                  ]
+                }
+              ]
+            }
+          });
+        }
+      } catch (e) {
+        console.error('CMS Initialisierungsfehler:', e);
+      }
+    }
+
+    // Netlify Identity Redirect
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>
