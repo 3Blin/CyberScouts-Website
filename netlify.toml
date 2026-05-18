@@ -1,6 +1,22 @@
 [build]
   publish = "."  # Das Root-Verzeichnis als Publish-Verzeichnis beibehalten
 
+# Clean URLs für Rechtseiten
+[[redirects]]
+  from = "/impressum"
+  to = "/impressum.html"
+  status = 200
+
+[[redirects]]
+  from = "/datenschutz"
+  to = "/datenschutz.html"
+  status = 200
+
+[[redirects]]
+  from = "/cookies"
+  to = "/cookies.html"
+  status = 200
+
 # Redirects für den Admin-Bereich
 [[redirects]]
   from = "/admin/*"
