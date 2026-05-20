@@ -1,31 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
+  const menuToggle = document.getElementById('menu-toggle');
+  const sidebar = document.getElementById('sidebar');
+  const closeBtn = document.getElementById('close-btn');
+  const overlay = document.getElementById('overlay');
+  const sidebarLinks = document.querySelectorAll('.sidebar-link');
 
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+  const openSidebar = () => {
+    sidebar?.classList.add('active');
+    overlay?.classList.add('active');
+    document.body.classList.add('sidebar-open');
+  };
 
-        // Close menu when a link is clicked (optional, good for SPAs)
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                }
-            });
-        });
-    }
+  const closeSidebar = () => {
+    sidebar?.classList.remove('active');
+    overlay?.classList.remove('active');
+    document.body.classList.remove('sidebar-open');
+  };
 
-    // Optional: Close menu if clicked outside
-    document.addEventListener('click', (event) => {
-        const isClickInsideNav = navLinks.contains(event.target);
-        const isClickOnToggle = menuToggle.contains(event.target);
-
-        if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-        }
-    });
-
+  menuToggle?.addEventListener('click', openSidebar);
+  closeBtn?.addEventListener('click', closeSidebar);
+  overlay?.addEventListener('click', closeSidebar);
+  sidebarLinks.forEach((link) => link.addEventListener('click', closeSidebar));
 });
-
