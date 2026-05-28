@@ -204,7 +204,11 @@ img {
 
 /* ================ HERO SECTION ================ */
 .hero {
-  background-color: var(--white); /* Changed background to white */
+  background-color: var(--primary-color); /* CyberScouts Yellow */
+  background-image: url("assets/hero-image.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-blend-mode: multiply;
   color: var(--dark-grey);
   padding: 120px 0 80px; /* Adjusted padding */
   text-align: center;
@@ -320,16 +324,10 @@ img {
 
 /* ================ EVENTS SECTION ================ */
 #events .calendar-placeholder {
-    min-height: 400px; /* Placeholder height */
-    background-color: var(--light-grey);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        min-height: 250px;
     border-radius: 10px;
-    color: #666;
-    font-size: 1.2rem;
-    border: 1px dashed #ccc;
     margin-top: 30px;
+    overflow: hidden;
 }
 
 /* ================ CONTACT SECTION ================ */
