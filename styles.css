@@ -204,7 +204,7 @@ img {
 
 /* ================ HERO SECTION ================ */
 .hero {
-  background-color: var(--primary-color); /* CyberScouts Yellow */
+  background-color: var(--primary-color) !important; /* CyberScouts Yellow */
   background-image: url("assets/hero-image.jpg");
   background-size: cover;
   background-position: center top;
