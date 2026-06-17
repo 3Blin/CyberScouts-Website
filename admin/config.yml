@@ -6,8 +6,8 @@ backend:
 # publish_mode: editorial_workflow
 
 # Pfade für Medien-Uploads
-media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
+media_folder: "shared/assets/uploads"
+public_folder: "/shared/assets/uploads"
 
 # Vereinfachte Collections für den Start
 collections:
