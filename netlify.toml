@@ -155,3 +155,19 @@
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "same-origin"
     Content-Security-Policy = "default-src 'self' https://unpkg.com https://identity.netlify.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://identity.netlify.com; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https://unpkg.com; font-src 'self' data: https://unpkg.com; connect-src 'self' https://api.netlify.com https://identity.netlify.com;"
+
+# Clean legal-page URLs used by navigation/footer
+[[redirects]]
+  from = "/impressum"
+  to = "/impressum.html"
+  status = 200
+
+[[redirects]]
+  from = "/datenschutz"
+  to = "/datenschutz.html"
+  status = 200
+
+[[redirects]]
+  from = "/cookies"
+  to = "/cookies.html"
+  status = 200
