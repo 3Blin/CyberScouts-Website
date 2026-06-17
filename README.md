@@ -1,76 +1,97 @@
 # CyberScouts Website
 
-Die offizielle Website der CyberScouts mit Netlify CMS Integration.
+Offizielle CyberScouts-Website mit Landingpage, zentralen Rechtseiten, Netlify CMS und Teilnehmer-Portfolios per Subdomain.
 
 ## Struktur
 
-Die Website verwendet Netlify CMS als Git-basiertes Content Management System. 
-
-### Verzeichnisstruktur
-
-```
+```text
 .
-├── admin/              # Netlify CMS Admin-Bereich
-│   ├── index.html      # Admin UI
-│   └── config.yml      # CMS Konfiguration
-├── assets/             # Bilder und andere Assets
-│   ├── logo.png        # Logo
-│   ├── hero-image.jpg  # Hintergrundbild
-│   └── uploads/        # Für CMS-Uploads
-├── content/            # Content-Dateien (vom CMS verwaltet)
-│   ├── landing/        # Landing Page Inhalte
-│   ├── modules/        # Module/Kurse
-│   ├── pages/          # Statische Seiten
-│   └── config/         # Konfigurationsdateien
-├── index.html          # Hauptseite
-├── styles.css          # CSS-Styles
-├── main.js             # JavaScript
-└── netlify.toml        # Netlify-Konfiguration
+├── admin/                       # Netlify CMS Admin-Bereich
+├── content/                     # CMS-Inhalte
+├── landingpage/                 # Hauptseite + Rechtseiten
+│   ├── index.html
+│   ├── impressum.html
+│   ├── datenschutz.html
+│   └── cookies.html
+├── portfolio-artem/
+├── portfolio-max/
+├── portfolio-adrian/
+├── portfolio-bero/
+├── portfolio-cornelius/
+├── portfolio-ferdinand/
+├── portfolio-angelina/
+├── portfolio-damyen/
+├── portfolio-paul/
+├── portfolio-jonas/
+├── portfolio-ian/
+├── portfolio-lukas/
+├── portfolio-noah/
+├── shared/                      # Gemeinsame CSS/JS/Assets
+│   ├── css/styles.css
+│   ├── js/main.js
+│   └── assets/
+└── netlify.toml                 # Netlify-Routing/Subdomains
 ```
 
-## Netlify CMS Einrichtung
+## Routing
 
-1. **GitHub-Repo verbinden**: Verbinde dein GitHub-Repository mit Netlify.
+Landingpage:
 
-2. **Netlify Identity aktivieren**:
-   - Gehe zu deinem Netlify Dashboard
-   - Wähle deine Site aus
-   - Navigiere zu "Site Settings" > "Identity"
-   - Klicke auf "Enable Identity"
-   - Unter "Registration Preferences" wähle "Invite only"
-   - Unter "Services" > "Git Gateway", klicke auf "Enable Git Gateway"
+```text
+cyberscouts.it     -> /landingpage/index.html
+www.cyberscouts.it -> /landingpage/index.html
+```
 
-3. **Zugriff einrichten**:
-   - Gehe zu "Identity" > "Invite Users"
-   - Gib die E-Mail-Adressen der Admins ein und klicke auf "Send"
-   - Die Eingeladenen erhalten einen Link, um sich zu registrieren
+Teilnehmer-Portfolios:
 
-4. **CMS Zugriff**:
-   - Nach der Anmeldung ist der CMS-Bereich unter `/admin/` verfügbar
+```text
+artem.cyberscouts.it      -> /portfolio-artem/index.html
+max.cyberscouts.it        -> /portfolio-max/index.html
+adrian.cyberscouts.it     -> /portfolio-adrian/index.html
+bero.cyberscouts.it       -> /portfolio-bero/index.html
+cornelius.cyberscouts.it  -> /portfolio-cornelius/index.html
+ferdinand.cyberscouts.it  -> /portfolio-ferdinand/index.html
+angelina.cyberscouts.it   -> /portfolio-angelina/index.html
+damyen.cyberscouts.it     -> /portfolio-damyen/index.html
+paul.cyberscouts.it       -> /portfolio-paul/index.html
+jonas.cyberscouts.it      -> /portfolio-jonas/index.html
+ian.cyberscouts.it        -> /portfolio-ian/index.html
+lukas.cyberscouts.it      -> /portfolio-lukas/index.html
+noah.cyberscouts.it       -> /portfolio-noah/index.html
+```
+
+Zentrale Rechtseiten:
+
+```text
+cyberscouts.it/impressum
+cyberscouts.it/datenschutz
+cyberscouts.it/cookies
+```
 
 ## Lokale Entwicklung
 
-Du kannst die Website lokal entwickeln:
+```bash
+python3 -m http.server 18089
+```
 
-1. Klone das Repository:
-   ```
-   git clone https://github.com/3Blin/CyberScouts-Website.git
-   ```
+Dann direkt öffnen:
 
-2. Öffne `index.html` in deinem Browser oder verwende einen lokalen Server:
-   ```
-   npx serve
-   ```
+```text
+http://127.0.0.1:18089/landingpage/index.html
+http://127.0.0.1:18089/portfolio-artem/index.html
+```
 
-3. Bearbeite die Dateien nach Bedarf.
+Netlify-Rewrites werden lokal vom einfachen Python-Server nicht simuliert.
 
-## Inhalte bearbeiten
+## Netlify CMS Einrichtung
 
-1. Logge dich im Admin-Bereich ein: `https://deine-website.netlify.app/admin/`
-2. Bearbeite die Inhalte über das CMS
-3. Publiziere die Änderungen, um sie live zu stellen
+1. GitHub-Repo mit Netlify verbinden.
+2. Netlify Identity aktivieren.
+3. Git Gateway aktivieren.
+4. Admin unter `/admin/` öffnen.
+
+CMS-Medien werden nach `shared/assets/uploads` geschrieben und öffentlich unter `/shared/assets/uploads` ausgeliefert.
 
 ## Kontakt
 
-Bei Fragen oder Problemen, kontaktiere uns unter:
-[kontakt@cyberscouts.it](mailto:kontakt@cyberscouts.it)
+[mail@cyberscouts.it](mailto:mail@cyberscouts.it)
