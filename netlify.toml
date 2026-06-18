@@ -1,0 +1,173 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "https://cyberscouts.it/impressum"
+  to = "/landingpage/impressum.html"
+  status = 200
+
+[[redirects]]
+  from = "https://cyberscouts.it/datenschutz"
+  to = "/landingpage/datenschutz.html"
+  status = 200
+
+[[redirects]]
+  from = "https://cyberscouts.it/cookies"
+  to = "/landingpage/cookies.html"
+  status = 200
+
+[[redirects]]
+  from = "https://www.cyberscouts.it/impressum"
+  to = "/landingpage/impressum.html"
+  status = 200
+
+[[redirects]]
+  from = "https://www.cyberscouts.it/datenschutz"
+  to = "/landingpage/datenschutz.html"
+  status = 200
+
+[[redirects]]
+  from = "https://www.cyberscouts.it/cookies"
+  to = "/landingpage/cookies.html"
+  status = 200
+
+[[redirects]]
+  from = "/impressum"
+  to = "/landingpage/impressum.html"
+  status = 200
+
+[[redirects]]
+  from = "/datenschutz"
+  to = "/landingpage/datenschutz.html"
+  status = 200
+
+[[redirects]]
+  from = "/cookies"
+  to = "/landingpage/cookies.html"
+  status = 200
+
+[[redirects]]
+  from = "https://artem.cyberscouts.it/*"
+  to = "/portfolio-artem/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://max.cyberscouts.it/*"
+  to = "/portfolio-max/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://adrian.cyberscouts.it/*"
+  to = "/portfolio-adrian/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://bero.cyberscouts.it/*"
+  to = "/portfolio-bero/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://cornelius.cyberscouts.it/*"
+  to = "/portfolio-cornelius/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://ferdinand.cyberscouts.it/*"
+  to = "/portfolio-ferdinand/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://angelina.cyberscouts.it/*"
+  to = "/portfolio-angelina/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://damyen.cyberscouts.it/*"
+  to = "/portfolio-damyen/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://paul.cyberscouts.it/*"
+  to = "/portfolio-paul/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://jonas.cyberscouts.it/*"
+  to = "/portfolio-jonas/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://ian.cyberscouts.it/*"
+  to = "/portfolio-ian/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://lukas.cyberscouts.it/*"
+  to = "/portfolio-lukas/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://noah.cyberscouts.it/*"
+  to = "/portfolio-noah/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://cyberscouts.it/*"
+  to = "/landingpage/index.html"
+  status = 200
+
+[[redirects]]
+  from = "https://www.cyberscouts.it/*"
+  to = "/landingpage/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+# Deploy previews / Netlify default domain: root falls back to landingpage.
+[[redirects]]
+  from = "/*"
+  to = "/landingpage/index.html"
+  status = 200
+
+[template.environment]
+  NETLIFY_IDENTITY_ENABLED = "true"
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "same-origin"
+    Content-Security-Policy = "default-src 'self' https://unpkg.com https://identity.netlify.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://identity.netlify.com; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https://unpkg.com; font-src 'self' data: https://unpkg.com; connect-src 'self' https://api.netlify.com https://identity.netlify.com;"
+
+# Clean legal-page URLs used by navigation/footer
+[[redirects]]
+  from = "/impressum"
+  to = "/impressum.html"
+  status = 200
+
+[[redirects]]
+  from = "/datenschutz"
+  to = "/datenschutz.html"
+  status = 200
+
+[[redirects]]
+  from = "/cookies"
+  to = "/cookies.html"
+  status = 200
